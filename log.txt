@@ -1,0 +1,683 @@
+(base) apple@MacBook-Pro-Chandresh cjs % PIL
+zsh: command not found: PIL
+(base) apple@MacBook-Pro-Chandresh cjs % cd fetchIt 
+(base) apple@MacBook-Pro-Chandresh fetchIt % python3 conver_image_char.py 
+(base) apple@MacBook-Pro-Chandresh fetchIt % python3 conver_image_char.py
+(base) apple@MacBook-Pro-Chandresh fetchIt % python3 conver_image_char.py
+(base) apple@MacBook-Pro-Chandresh fetchIt % python3 conver_image_char.py
+(base) apple@MacBook-Pro-Chandresh fetchIt % cd promptit_
+cd: no such file or directory: promptit_
+(base) apple@MacBook-Pro-Chandresh fetchIt % cd ../promptit
+(base) apple@MacBook-Pro-Chandresh promptit % cd ../promptit_
+(base) apple@MacBook-Pro-Chandresh promptit_ % python3 -m response_1.src.main
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/apple/cjs/promptit_/response_1/src/main.py", line 4, in <module>
+    from .apply_changes.extractor.updates_extractor import json_code_snippet
+  File "/Users/apple/cjs/promptit_/response_1/src/apply_changes/extractor/updates_extractor.py", line 6, in <module>
+    from ...llm.connection import response # the response that we get from the llm
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/llm/connection.py", line 5, in <module>
+    from ..combine.combine import combined_data
+  File "/Users/apple/cjs/promptit_/response_1/src/combine/combine.py", line 3, in <module>
+    from ..structure_crawler.structure_crawler import crawled_structure
+ModuleNotFoundError: No module named 'response_1.src.structure_crawler'
+(base) apple@MacBook-Pro-Chandresh promptit_ % cd response_1 
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/apple/cjs/promptit_/response_1/src/main.py", line 4, in <module>
+    from .apply_changes.extractor.updates_extractor import json_code_snippet
+  File "/Users/apple/cjs/promptit_/response_1/src/apply_changes/extractor/updates_extractor.py", line 6, in <module>
+    from ...llm.connection import response # the response that we get from the llm
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/llm/connection.py", line 5, in <module>
+    from ..combine.combine import combined_data
+  File "/Users/apple/cjs/promptit_/response_1/src/combine/combine.py", line 3, in <module>
+    from ..structure_crawler.structure_crawler import crawled_structure
+ModuleNotFoundError: No module named 'src.structure_crawler'
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: I want to make an application which will have directories of photos taken at several angles of many p^[eoples and given a new photo can identify of which person the photo is
+User Prompt: I want to make an application which will have directories of photos taken at several angles of manyeoples and given a new photo can identify of which person the photo is
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/apple/cjs/promptit_/response_1/src/main.py", line 4, in <module>
+    from .apply_changes.extractor.updates_extractor import json_code_snippet
+  File "/Users/apple/cjs/promptit_/response_1/src/apply_changes/extractor/updates_extractor.py", line 7, in <module>
+    from ...data_crawler.data_crawler import crawl_directory
+ModuleNotFoundError: No module named 'src.data_crawler'
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: j
+User Prompt: j
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+json code snippet: {'modify': {'/Users/apple/cjs/facer/what_do_I_want_to_make.txt': "I want to make an application that can perform face recognition for known individuals. There will be a 'known_people' directory containing subdirectories for each person, with images from different angles.\nThe objective is to identify a person from new images using this dataset.\n"}, 'create': {'/Users/apple/cjs/facer/README.md': "# Face Recognition Application\n\nThis application can recognize known individuals from images using a database of photos taken from different angles.\n\n## Directory Structure\n- **known_people/**: Contains subdirectories named after each known person, each containing multiple photos.\n\n## Requirements\n- Python 3.x\n- face_recognition library\n\n## Setup\n\nRun the following command to install necessary libraries:\n```\npip install face_recognition\n```\n\n## Run\nInstructions to execute the program once it's developed.\n", '/Users/apple/cjs/facer/main.py': '# main.py\n\nimport os\nimport face_recognition\n\n# Load a sample picture and learn how to recognize it\n# Assume the directory \'known_people\' exists with persons\' images\nKNOWN_PEOPLE_DIR = \'known_people\'\n\ndef load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR):\n    known_faces = []\n    known_names = []\n    for person_name in os.listdir(known_people_dir):\n        person_dir = os.path.join(known_people_dir, person_name)\n        if not os.path.isdir(person_dir):\n            continue\n        for filename in os.listdir(person_dir):\n            filepath = os.path.join(person_dir, filename)\n            image = face_recognition.load_image_file(filepath)\n            encodings = face_recognition.face_encodings(image)\n            if encodings:\n                known_faces.append(encodings[0])\n                known_names.append(person_name)\n    return known_faces, known_names\n\n\nif __name__ == "__main__":\n    known_faces, known_names = load_known_faces()\n    print(f"Loaded faces for: {known_names}")\n    # Code for processing a new image and matching against known faces will be added here\n', '/Users/apple/cjs/facer/.gitignore': '# Ignore Python cache\n__pycache__/\n\n# Ignore personal environment configuration\nenv/\n\n# Ignore known_people images if needed\ndata/\n*.jpg\n*.jpeg\n*.png\n'}}
+type of json_code_snipped:  <class 'dict'>
+
+          ################################
+            Modification/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/what_do_I_want_to_make.txt  --------------------------------------------
+############content##########
+I want to make an application that can perform face recognition for known individuals. There will be a 'known_people' directory containing subdirectories for each person, with images from different angles.
+The objective is to identify a person from new images using this dataset.
+
+
+          ################################
+            Creation/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/README.md  --------------------------------------------
+############content##########
+# Face Recognition Application
+
+This application can recognize known individuals from images using a database of photos taken from different angles.
+
+## Directory Structure
+- **known_people/**: Contains subdirectories named after each known person, each containing multiple photos.
+
+## Requirements
+- Python 3.x
+- face_recognition library
+
+## Setup
+
+Run the following command to install necessary libraries:
+```
+pip install face_recognition
+```
+
+## Run
+Instructions to execute the program once it's developed.
+
+--------------------------------------------  /Users/apple/cjs/facer/main.py  --------------------------------------------
+############content##########
+# main.py
+
+import os
+import face_recognition
+
+# Load a sample picture and learn how to recognize it
+# Assume the directory 'known_people' exists with persons' images
+KNOWN_PEOPLE_DIR = 'known_people'
+
+def load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR):
+    known_faces = []
+    known_names = []
+    for person_name in os.listdir(known_people_dir):
+        person_dir = os.path.join(known_people_dir, person_name)
+        if not os.path.isdir(person_dir):
+            continue
+        for filename in os.listdir(person_dir):
+            filepath = os.path.join(person_dir, filename)
+            image = face_recognition.load_image_file(filepath)
+            encodings = face_recognition.face_encodings(image)
+            if encodings:
+                known_faces.append(encodings[0])
+                known_names.append(person_name)
+    return known_faces, known_names
+
+
+if __name__ == "__main__":
+    known_faces, known_names = load_known_faces()
+    print(f"Loaded faces for: {known_names}")
+    # Code for processing a new image and matching against known faces will be added here
+
+--------------------------------------------  /Users/apple/cjs/facer/.gitignore  --------------------------------------------
+############content##########
+# Ignore Python cache
+__pycache__/
+
+# Ignore personal environment configuration
+env/
+
+# Ignore known_people images if needed
+data/
+*.jpg
+*.jpeg
+*.png
+
+should_apply_changes_from_llm (y/n): y
+Modified: /Users/apple/cjs/facer/what_do_I_want_to_make.txt
+Created: /Users/apple/cjs/facer/README.md
+Created: /Users/apple/cjs/facer/main.py
+Created: /Users/apple/cjs/facer/.gitignore
+Changes applied successfully.
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: can you make a sqlite data base with schema like: u_id, person_name, encoding? And in the data base there can be more than one encoding for the same person, as there will be more than one photo of the same person. Sorry, make the database schema as id, person_name, photo_file_path, encoding.
+User Prompt: can you make a sqlite data base with schema like: u_id, person_name, encoding? And in the data base there can be more than one encoding for the same person, as there will be more than one photo of the same person. Sorry, make the database schema as id, person_name, photo_file_path, encoding.
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+json code snippet: {'modify': {'/Users/apple/cjs/facer/main.py': '# main.py\n\nimport os\nimport face_recognition\nimport sqlite3\n\n# Load a sample picture and learn how to recognize it\n# Assume the directory \'known_people\' exists with persons\' images\nKNOWN_PEOPLE_DIR = \'known_people\'\nDB_FILE = \'face_recognition.db\'\n\n\ndef create_database(db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n    cursor.execute(\'\'\'CREATE TABLE IF NOT EXISTS faces (\n                        id INTEGER PRIMARY KEY AUTOINCREMENT,\n                        person_name TEXT NOT NULL,\n                        photo_file_path TEXT NOT NULL,\n                        encoding BLOB NOT NULL\n                      )\'\'\')\n    connection.commit()\n    connection.close()\n\n\ndef load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    for person_name in os.listdir(known_people_dir):\n        person_dir = os.path.join(known_people_dir, person_name)\n        if not os.path.isdir(person_dir):\n            continue\n\n        for filename in os.listdir(person_dir):\n            filepath = os.path.join(person_dir, filename)\n            image = face_recognition.load_image_file(filepath)\n            encodings = face_recognition.face_encodings(image)\n\n            if encodings:\n                encoding = encodings[0]\n                cursor.execute(\'INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)\',\n                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))\n\n    connection.commit()\n    connection.close()\n\n\nif __name__ == "__main__":\n    create_database()\n    load_known_faces()\n    print("Database has been populated with known faces.")\n    # Code for processing a new image and matching against known faces will be added here\n'}, 'create': {}}
+type of json_code_snipped:  <class 'dict'>
+
+          ################################
+            Modification/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/main.py  --------------------------------------------
+############content##########
+# main.py
+
+import os
+import face_recognition
+import sqlite3
+
+# Load a sample picture and learn how to recognize it
+# Assume the directory 'known_people' exists with persons' images
+KNOWN_PEOPLE_DIR = 'known_people'
+DB_FILE = 'face_recognition.db'
+
+
+def create_database(db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS faces (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        person_name TEXT NOT NULL,
+                        photo_file_path TEXT NOT NULL,
+                        encoding BLOB NOT NULL
+                      )''')
+    connection.commit()
+    connection.close()
+
+
+def load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    for person_name in os.listdir(known_people_dir):
+        person_dir = os.path.join(known_people_dir, person_name)
+        if not os.path.isdir(person_dir):
+            continue
+
+        for filename in os.listdir(person_dir):
+            filepath = os.path.join(person_dir, filename)
+            image = face_recognition.load_image_file(filepath)
+            encodings = face_recognition.face_encodings(image)
+
+            if encodings:
+                encoding = encodings[0]
+                cursor.execute('INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)',
+                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))
+
+    connection.commit()
+    connection.close()
+
+
+if __name__ == "__main__":
+    create_database()
+    load_known_faces()
+    print("Database has been populated with known faces.")
+    # Code for processing a new image and matching against known faces will be added here
+
+
+          ################################
+            Creation/s:
+          ################################
+        
+should_apply_changes_from_llm (y/n): y
+Modified: /Users/apple/cjs/facer/main.py
+Changes applied successfully.
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: can you add the code for processing a new image and matching against known faces in the exising code?
+User Prompt: can you add the code for processing a new image and matching against known faces in the exising code?
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+json code snippet: {'modify': {'/Users/apple/cjs/facer/main.py': '# main.py\n\nimport os\nimport face_recognition\nimport sqlite3\n\n# Load a sample picture and learn how to recognize it\n# Assume the directory \'known_people\' exists with persons\' images\nKNOWN_PEOPLE_DIR = \'known_people\'\nDB_FILE = \'face_recognition.db\'\n\n\ndef create_database(db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n    cursor.execute(\'\'\'CREATE TABLE IF NOT EXISTS faces (\n                        id INTEGER PRIMARY KEY AUTOINCREMENT,\n                        person_name TEXT NOT NULL,\n                        photo_file_path TEXT NOT NULL,\n                        encoding BLOB NOT NULL\n                      )\'\'\')\n    connection.commit()\n    connection.close()\n\n\ndef load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    for person_name in os.listdir(known_people_dir):\n        person_dir = os.path.join(known_people_dir, person_name)\n        if not os.path.isdir(person_dir):\n            continue\n\n        for filename in os.listdir(person_dir):\n            filepath = os.path.join(person_dir, filename)\n            image = face_recognition.load_image_file(filepath)\n            encodings = face_recognition.face_encodings(image)\n\n            if encodings:\n                encoding = encodings[0]\n                cursor.execute(\'INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)\',\n                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))\n\n    connection.commit()\n    connection.close()\n\n\ndef recognize_face(image_path, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    # Load the image from which we want to recognize the face\n    image_to_recognize = face_recognition.load_image_file(image_path)\n    encodings = face_recognition.face_encodings(image_to_recognize)\n\n    if not encodings:\n        print("No face detected in the image.")\n        return\n\n    encoding_to_compare = encodings[0]\n\n    # Fetch all known face encodings from database\n    cursor.execute(\'SELECT person_name, encoding FROM faces\')\n    known_faces = cursor.fetchall()\n\n    for known_person, known_encoding_blob in known_faces:\n        known_encoding = face_recognition.face_encodings_from_np_array(known_encoding_blob)\n\n        # Check if the face from input image matches any of the known faces\n        matches = face_recognition.compare_faces([known_encoding], encoding_to_compare)\n\n        if True in matches:\n            print(f"Match found: {known_person}")\n            connection.close()\n            return\n\n    print("No match found.")\n    connection.close()\n\n\nif __name__ == "__main__":\n    create_database()\n    load_known_faces()\n    print("Database has been populated with known faces.")\n    # Sample usage (path to the new image to recognize needs to be specified):\n    # recognize_face(\'path_to_new_image.jpg\')\n'}, 'create': {}}
+type of json_code_snipped:  <class 'dict'>
+
+          ################################
+            Modification/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/main.py  --------------------------------------------
+############content##########
+# main.py
+
+import os
+import face_recognition
+import sqlite3
+
+# Load a sample picture and learn how to recognize it
+# Assume the directory 'known_people' exists with persons' images
+KNOWN_PEOPLE_DIR = 'known_people'
+DB_FILE = 'face_recognition.db'
+
+
+def create_database(db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS faces (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        person_name TEXT NOT NULL,
+                        photo_file_path TEXT NOT NULL,
+                        encoding BLOB NOT NULL
+                      )''')
+    connection.commit()
+    connection.close()
+
+
+def load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    for person_name in os.listdir(known_people_dir):
+        person_dir = os.path.join(known_people_dir, person_name)
+        if not os.path.isdir(person_dir):
+            continue
+
+        for filename in os.listdir(person_dir):
+            filepath = os.path.join(person_dir, filename)
+            image = face_recognition.load_image_file(filepath)
+            encodings = face_recognition.face_encodings(image)
+
+            if encodings:
+                encoding = encodings[0]
+                cursor.execute('INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)',
+                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))
+
+    connection.commit()
+    connection.close()
+
+
+def recognize_face(image_path, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    # Load the image from which we want to recognize the face
+    image_to_recognize = face_recognition.load_image_file(image_path)
+    encodings = face_recognition.face_encodings(image_to_recognize)
+
+    if not encodings:
+        print("No face detected in the image.")
+        return
+
+    encoding_to_compare = encodings[0]
+
+    # Fetch all known face encodings from database
+    cursor.execute('SELECT person_name, encoding FROM faces')
+    known_faces = cursor.fetchall()
+
+    for known_person, known_encoding_blob in known_faces:
+        known_encoding = face_recognition.face_encodings_from_np_array(known_encoding_blob)
+
+        # Check if the face from input image matches any of the known faces
+        matches = face_recognition.compare_faces([known_encoding], encoding_to_compare)
+
+        if True in matches:
+            print(f"Match found: {known_person}")
+            connection.close()
+            return
+
+    print("No match found.")
+    connection.close()
+
+
+if __name__ == "__main__":
+    create_database()
+    load_known_faces()
+    print("Database has been populated with known faces.")
+    # Sample usage (path to the new image to recognize needs to be specified):
+    # recognize_face('path_to_new_image.jpg')
+
+
+          ################################
+            Creation/s:
+          ################################
+        
+should_apply_changes_from_llm (y/n): y
+Modified: /Users/apple/cjs/facer/main.py
+Changes applied successfully.
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: please lookinto the error that are there in the error_while_running_the_code.txt file
+User Prompt: please lookinto the error that are there in the error_while_running_the_code.txt file
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/apple/cjs/promptit_/response_1/src/main.py", line 4, in <module>
+    from .apply_changes.extractor.updates_extractor import json_code_snippet
+  File "/Users/apple/cjs/promptit_/response_1/src/apply_changes/extractor/updates_extractor.py", line 6, in <module>
+    from ...llm.connection import response # the response that we get from the llm
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/llm/connection.py", line 63, in <module>
+    response = get_llm_suggestions(combined_data, user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/llm/connection.py", line 24, in get_llm_suggestions
+    completion = client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/miniforge3/lib/python3.12/site-packages/openai/_utils/_utils.py", line 274, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/miniforge3/lib/python3.12/site-packages/openai/resources/chat/completions.py", line 815, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/apple/miniforge3/lib/python3.12/site-packages/openai/_base_client.py", line 1277, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/miniforge3/lib/python3.12/site-packages/openai/_base_client.py", line 954, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/apple/miniforge3/lib/python3.12/site-packages/openai/_base_client.py", line 1058, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "Sorry! We've encountered an issue with repetitive patterns in your prompt. Please try again with a different prompt.", 'type': 'invalid_request_error', 'param': 'prompt', 'code': 'invalid_prompt'}}
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.combine.combine
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main           
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: please look into the error that are there in the error_while_running_the_code.txt file
+User Prompt: please look into the error that are there in the error_while_running_the_code.txt file
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+json code snippet: {'modify': {'/Users/apple/cjs/facer/main.py': '# main.py\n\nimport os\nimport face_recognition\nimport sqlite3\nimport numpy as np\n\n# Load a sample picture and learn how to recognize it\n# Assume the directory \'known_people\' exists with persons\' images\nKNOWN_PEOPLE_DIR = \'/Users/apple/cjs/known_people\'\nDB_FILE = \'face_recognition.db\'\n\n\ndef create_database(db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n    cursor.execute(\'\'\'CREATE TABLE IF NOT EXISTS faces (\n                        id INTEGER PRIMARY KEY AUTOINCREMENT,\n                        person_name TEXT NOT NULL,\n                        photo_file_path TEXT NOT NULL,\n                        encoding BLOB NOT NULL\n                      )\'\'\')\n    connection.commit()\n    connection.close()\n\n\ndef load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    for person_name in os.listdir(known_people_dir):\n        person_dir = os.path.join(known_people_dir, person_name)\n        if not os.path.isdir(person_dir):\n            continue\n\n        for filename in os.listdir(person_dir):\n            filepath = os.path.join(person_dir, filename)\n            image = face_recognition.load_image_file(filepath)\n            encodings = face_recognition.face_encodings(image)\n\n            if encodings:\n                encoding = encodings[0]\n                cursor.execute(\'INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)\',\n                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))\n\n    connection.commit()\n    connection.close()\n\n\ndef recognize_face(image_path, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    # Load the image from which we want to recognize the face\n    image_to_recognize = face_recognition.load_image_file(image_path)\n    encodings = face_recognition.face_encodings(image_to_recognize)\n\n    if not encodings:\n        print("No face detected in the image.")\n        return\n\n    encoding_to_compare = encodings[0]\n\n    # Fetch all known face encodings from database\n    cursor.execute(\'SELECT person_name, encoding FROM faces\')\n    known_faces = cursor.fetchall()\n\n    for known_person, known_encoding_blob in known_faces:\n        # Convert the BLOB back into a numpy array\n        known_encoding = np.frombuffer(known_encoding_blob, dtype=np.float64)\n\n        # Check if the face from input image matches any of the known faces\n        matches = face_recognition.compare_faces([known_encoding], encoding_to_compare)\n\n        if True in matches:\n            print(f"Match found: {known_person}")\n            connection.close()\n            return\n\n    print("No match found.")\n    connection.close()\n\n\nif __name__ == "__main__":\n    create_database()\n    load_known_faces()\n    print("Database has been populated with known faces.")\n    # Sample usage (path to the new image to recognize needs to be specified):\n    recognize_face(\'/Users/apple/cjs/unknown_people/image.png\')\n'}, 'create': {}}
+type of json_code_snipped:  <class 'dict'>
+
+          ################################
+            Modification/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/main.py  --------------------------------------------
+############content##########
+# main.py
+
+import os
+import face_recognition
+import sqlite3
+import numpy as np
+
+# Load a sample picture and learn how to recognize it
+# Assume the directory 'known_people' exists with persons' images
+KNOWN_PEOPLE_DIR = '/Users/apple/cjs/known_people'
+DB_FILE = 'face_recognition.db'
+
+
+def create_database(db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS faces (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        person_name TEXT NOT NULL,
+                        photo_file_path TEXT NOT NULL,
+                        encoding BLOB NOT NULL
+                      )''')
+    connection.commit()
+    connection.close()
+
+
+def load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    for person_name in os.listdir(known_people_dir):
+        person_dir = os.path.join(known_people_dir, person_name)
+        if not os.path.isdir(person_dir):
+            continue
+
+        for filename in os.listdir(person_dir):
+            filepath = os.path.join(person_dir, filename)
+            image = face_recognition.load_image_file(filepath)
+            encodings = face_recognition.face_encodings(image)
+
+            if encodings:
+                encoding = encodings[0]
+                cursor.execute('INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)',
+                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))
+
+    connection.commit()
+    connection.close()
+
+
+def recognize_face(image_path, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    # Load the image from which we want to recognize the face
+    image_to_recognize = face_recognition.load_image_file(image_path)
+    encodings = face_recognition.face_encodings(image_to_recognize)
+
+    if not encodings:
+        print("No face detected in the image.")
+        return
+
+    encoding_to_compare = encodings[0]
+
+    # Fetch all known face encodings from database
+    cursor.execute('SELECT person_name, encoding FROM faces')
+    known_faces = cursor.fetchall()
+
+    for known_person, known_encoding_blob in known_faces:
+        # Convert the BLOB back into a numpy array
+        known_encoding = np.frombuffer(known_encoding_blob, dtype=np.float64)
+
+        # Check if the face from input image matches any of the known faces
+        matches = face_recognition.compare_faces([known_encoding], encoding_to_compare)
+
+        if True in matches:
+            print(f"Match found: {known_person}")
+            connection.close()
+            return
+
+    print("No match found.")
+    connection.close()
+
+
+if __name__ == "__main__":
+    create_database()
+    load_known_faces()
+    print("Database has been populated with known faces.")
+    # Sample usage (path to the new image to recognize needs to be specified):
+    recognize_face('/Users/apple/cjs/unknown_people/image.png')
+
+
+          ################################
+            Creation/s:
+          ################################
+        
+should_apply_changes_from_llm (y/n): y
+Modified: /Users/apple/cjs/facer/main.py
+Changes applied successfully.
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: ^Xc^CTraceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/apple/cjs/promptit_/response_1/src/main.py", line 4, in <module>
+    from .apply_changes.extractor.updates_extractor import json_code_snippet
+  File "/Users/apple/cjs/promptit_/response_1/src/apply_changes/extractor/updates_extractor.py", line 6, in <module>
+    from ...llm.connection import response # the response that we get from the llm
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/llm/connection.py", line 6, in <module>
+    from ..prompter.prompter import user_prompt
+  File "/Users/apple/cjs/promptit_/response_1/src/prompter/prompter.py", line 9, in <module>
+    user_prompt = get_user_prompt()
+                  ^^^^^^^^^^^^^^^^^
+  File "/Users/apple/cjs/promptit_/response_1/src/prompter/prompter.py", line 5, in get_user_prompt
+    prompt = input("Describe what you want to build or change in your project: ")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+(base) apple@MacBook-Pro-Chandresh response_1 % python3 -m src.main
+crawlind file structure:  /Users/apple/cjs/facer
+crawled file structure
+crawlind directory: /Users/apple/cjs/facer
+data crawling is completed!
+Combined data saved to combined_project_data.json
+Describe what you want to build or change in your project: the code is wrongly Identifying the person. While giving the photo of a person which is not in the known_people directory, it is identifying as a person in the directory.
+User Prompt: the code is wrongly Identifying the person. While giving the photo of a person which is not in the known_people directory, it is identifying as a person in the directory.
+
+            ################################
+            connection made to the LLM
+            ################################
+          
+json code snippet: {'modify': {'/Users/apple/cjs/facer/main.py': '# main.py\n\nimport os\nimport face_recognition\nimport sqlite3\nimport numpy as np\n\n# Load a sample picture and learn how to recognize it\n# Assume the directory \'known_people\' exists with persons\' images\nKNOWN_PEOPLE_DIR = \'/Users/apple/cjs/known_people\'\nDB_FILE = \'face_recognition.db\'\n# Create a threshold for face distance to determine matches\nMATCH_THRESHOLD = 0.6\n\n\ndef create_database(db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n    cursor.execute(\'\'\'CREATE TABLE IF NOT EXISTS faces (\n                        id INTEGER PRIMARY KEY AUTOINCREMENT,\n                        person_name TEXT NOT NULL,\n                        photo_file_path TEXT NOT NULL,\n                        encoding BLOB NOT NULL\n                      )\'\'\')\n    connection.commit()\n    connection.close()\n\n\ndef load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    for person_name in os.listdir(known_people_dir):\n        person_dir = os.path.join(known_people_dir, person_name)\n        if not os.path.isdir(person_dir):\n            continue\n\n        for filename in os.listdir(person_dir):\n            filepath = os.path.join(person_dir, filename)\n            image = face_recognition.load_image_file(filepath)\n            encodings = face_recognition.face_encodings(image)\n\n            if encodings:\n                encoding = encodings[0]\n                cursor.execute(\'INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)\',\n                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))\n\n    connection.commit()\n    connection.close()\n\n\ndef recognize_face(image_path, db_file=DB_FILE):\n    connection = sqlite3.connect(db_file)\n    cursor = connection.cursor()\n\n    # Load the image from which we want to recognize the face\n    image_to_recognize = face_recognition.load_image_file(image_path)\n    encodings = face_recognition.face_encodings(image_to_recognize)\n\n    if not encodings:\n        print("No face detected in the image.")\n        return\n\n    encoding_to_compare = encodings[0]\n\n    # Fetch all known face encodings from database\n    cursor.execute(\'SELECT person_name, encoding FROM faces\')\n    known_faces = cursor.fetchall()\n\n    for known_person, known_encoding_blob in known_faces:\n        # Convert the BLOB back into a numpy array\n        known_encoding = np.frombuffer(known_encoding_blob, dtype=np.float64)\n\n        # Calculate the face distance and check it against the threshold\n        face_distance = face_recognition.face_distance([known_encoding], encoding_to_compare)[0]\n        if face_distance < MATCH_THRESHOLD:\n            print(f"Match found: {known_person}, Distance: {face_distance}")\n            connection.close()\n            return\n\n    print("No match found.")\n    connection.close()\n\n\nif __name__ == "__main__":\n    create_database()\n    load_known_faces()\n    print("Database has been populated with known faces.")\n    # Sample usage (path to the new image to recognize needs to be specified):\n    # recognize_face(\'/Users/apple/cjs/fetchIt/known_images/3R4A0313.jpg\')\n'}, 'create': {}}
+type of json_code_snipped:  <class 'dict'>
+
+          ################################
+            Modification/s:
+          ################################
+        
+--------------------------------------------  /Users/apple/cjs/facer/main.py  --------------------------------------------
+############content##########
+# main.py
+
+import os
+import face_recognition
+import sqlite3
+import numpy as np
+
+# Load a sample picture and learn how to recognize it
+# Assume the directory 'known_people' exists with persons' images
+KNOWN_PEOPLE_DIR = '/Users/apple/cjs/known_people'
+DB_FILE = 'face_recognition.db'
+# Create a threshold for face distance to determine matches
+MATCH_THRESHOLD = 0.6
+
+
+def create_database(db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS faces (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        person_name TEXT NOT NULL,
+                        photo_file_path TEXT NOT NULL,
+                        encoding BLOB NOT NULL
+                      )''')
+    connection.commit()
+    connection.close()
+
+
+def load_known_faces(known_people_dir=KNOWN_PEOPLE_DIR, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    for person_name in os.listdir(known_people_dir):
+        person_dir = os.path.join(known_people_dir, person_name)
+        if not os.path.isdir(person_dir):
+            continue
+
+        for filename in os.listdir(person_dir):
+            filepath = os.path.join(person_dir, filename)
+            image = face_recognition.load_image_file(filepath)
+            encodings = face_recognition.face_encodings(image)
+
+            if encodings:
+                encoding = encodings[0]
+                cursor.execute('INSERT INTO faces (person_name, photo_file_path, encoding) VALUES (?, ?, ?)',
+                               (person_name, filepath, sqlite3.Binary(encoding.tobytes())))
+
+    connection.commit()
+    connection.close()
+
+
+def recognize_face(image_path, db_file=DB_FILE):
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+
+    # Load the image from which we want to recognize the face
+    image_to_recognize = face_recognition.load_image_file(image_path)
+    encodings = face_recognition.face_encodings(image_to_recognize)
+
+    if not encodings:
+        print("No face detected in the image.")
+        return
+
+    encoding_to_compare = encodings[0]
+
+    # Fetch all known face encodings from database
+    cursor.execute('SELECT person_name, encoding FROM faces')
+    known_faces = cursor.fetchall()
+
+    for known_person, known_encoding_blob in known_faces:
+        # Convert the BLOB back into a numpy array
+        known_encoding = np.frombuffer(known_encoding_blob, dtype=np.float64)
+
+        # Calculate the face distance and check it against the threshold
+        face_distance = face_recognition.face_distance([known_encoding], encoding_to_compare)[0]
+        if face_distance < MATCH_THRESHOLD:
+            print(f"Match found: {known_person}, Distance: {face_distance}")
+            connection.close()
+            return
+
+    print("No match found.")
+    connection.close()
+
+
+if __name__ == "__main__":
+    create_database()
+    load_known_faces()
+    print("Database has been populated with known faces.")
+    # Sample usage (path to the new image to recognize needs to be specified):
+    # recognize_face('/Users/apple/cjs/fetchIt/known_images/3R4A0313.jpg')
+
+
+          ################################
+            Creation/s:
+          ################################
+        
+should_apply_changes_from_llm (y/n): y
+Modified: /Users/apple/cjs/facer/main.py
+Changes applied successfully.
+(base) apple@MacBook-Pro-Chandresh response_1 % 
